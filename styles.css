@@ -7321,6 +7321,70 @@ main#main .about-journey .history-timeline .history-entry.is-active .history-sig
   justify-content: center;
 }
 
+/* The 2025 archive moves continuously, keeping the full image proportions. */
+main#main .about-journey .history-timeline .history-entry.is-active .history-smooth-gallery {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+  box-shadow: none;
+  touch-action: pan-y;
+}
+
+.history-smooth-track {
+  display: flex;
+  width: max-content;
+  animation: history-smooth-loop var(--history-loop-duration, 100s) linear infinite;
+  animation-play-state: paused;
+}
+
+.history-entry.is-active .history-smooth-track { animation-play-state: running; }
+
+.history-smooth-group {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 16px;
+  padding-right: 16px;
+}
+
+main#main .about-journey .history-smooth-group figure {
+  flex: 0 0 auto;
+  width: auto;
+  height: clamp(250px, 28vw, 360px);
+  margin: 0;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+main#main .about-journey .history-smooth-group :is(img, video) {
+  position: static;
+  display: block;
+  width: auto;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  min-height: 0;
+  aspect-ratio: auto;
+  object-fit: contain;
+  border: 0;
+  box-shadow: none;
+  transform: none;
+}
+
+@keyframes history-smooth-loop {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .history-smooth-track { animation: none; }
+  .history-smooth-group[aria-hidden="true"] { display: none; }
+  main#main .about-journey .history-timeline .history-entry.is-active .history-smooth-gallery { overflow-x: auto; }
+}
+
 /* Four-plan ordering surface: subscription tiers and one-off work together. */
 main#main .packages-page {
   position: relative;

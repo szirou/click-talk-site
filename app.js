@@ -2314,6 +2314,44 @@ document.querySelectorAll("[data-auto-carousel]").forEach((gallery) => {
   }, 4800);
 });
 
+// A seamless filmstrip for the 2025 photographs and video.
+document.querySelectorAll("[data-history-smooth]").forEach((gallery) => {
+  const track = gallery.querySelector(".history-smooth-track");
+  const group = gallery.querySelector(".history-smooth-group");
+  const duplicate = group.cloneNode(true);
+  duplicate.setAttribute("aria-hidden", "true");
+  duplicate.inert = true;
+  duplicate.querySelectorAll("img").forEach((image) => { image.loading = "eager"; });
+  duplicate.querySelectorAll("video").forEach((video) => { video.controls = false; });
+  track.append(duplicate);
+  const updateSpeed = () => {
+    const distance = group.getBoundingClientRect().width;
+    track.style.setProperty("--history-loop-duration", `${Math.max(1, distance / 38)}s`);
+  };
+  new ResizeObserver(updateSpeed).observe(group);
+  updateSpeed();
+
+  const visibleVideos = new Set();
+  const videos = [...gallery.querySelectorAll("video")];
+  const syncVideo = (video) => {
+    if (visibleVideos.has(video) && !document.hidden && !gallery.closest(".history-entry").hidden) {
+      video.play().catch(() => {});
+    } else video.pause();
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(({ target, isIntersecting }) => {
+      if (isIntersecting) visibleVideos.add(target);
+      else visibleVideos.delete(target);
+      syncVideo(target);
+    });
+  }, { threshold: 0.01 });
+  videos.forEach((video) => {
+    video.muted = true;
+    observer.observe(video);
+  });
+  document.addEventListener("visibilitychange", () => videos.forEach(syncVideo));
+});
+
 const historyYearTabs = [...document.querySelectorAll(".history-year-tab")];
 const historyEntries = [...document.querySelectorAll(".history-timeline .history-entry")];
 let activeYear = null;
