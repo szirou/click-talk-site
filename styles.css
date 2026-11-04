@@ -7394,6 +7394,13 @@ main#main .about-journey .history-smooth-group figure {
   border-radius: 4px;
 }
 
+main#main .about-journey .history-entry[data-history-entry="2025"] .history-smooth-group figure {
+  box-sizing: content-box;
+  border: 6px solid #fff;
+  border-radius: 10px;
+  background: #fff;
+}
+
 main#main .about-journey .history-smooth-group :is(img, video) {
   position: static;
   display: block;
