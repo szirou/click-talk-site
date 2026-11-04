@@ -2318,6 +2318,11 @@ document.querySelectorAll("[data-auto-carousel]").forEach((gallery) => {
 document.querySelectorAll("[data-history-smooth]").forEach((gallery) => {
   const track = gallery.querySelector(".history-smooth-track");
   const group = gallery.querySelector(".history-smooth-group");
+  group.querySelectorAll("figure").forEach((figure) => {
+    const media = figure.querySelector("img, video");
+    figure.style.setProperty("--history-media-ratio", Number(media.getAttribute("width")) / Number(media.getAttribute("height")));
+    if (media.tagName === "IMG") media.loading = "eager";
+  });
   const duplicate = group.cloneNode(true);
   duplicate.setAttribute("aria-hidden", "true");
   duplicate.inert = true;

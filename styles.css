@@ -7352,7 +7352,7 @@ main#main .about-journey .history-timeline .history-entry.is-active .history-smo
 
 main#main .about-journey .history-smooth-group figure {
   flex: 0 0 auto;
-  width: auto;
+  width: calc(clamp(250px, 28vw, 360px) * var(--history-media-ratio, 1));
   height: clamp(250px, 28vw, 360px);
   margin: 0;
   overflow: hidden;
