@@ -2314,7 +2314,7 @@ document.querySelectorAll("[data-auto-carousel]").forEach((gallery) => {
   }, 4800);
 });
 
-// A seamless filmstrip for the 2025 photographs and video.
+// A seamless filmstrip for journey photographs and video.
 document.querySelectorAll("[data-history-smooth]").forEach((gallery) => {
   const track = gallery.querySelector(".history-smooth-track");
   const group = gallery.querySelector(".history-smooth-group");

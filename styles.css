@@ -7321,7 +7321,7 @@ main#main .about-journey .history-timeline .history-entry.is-active .history-sig
   justify-content: center;
 }
 
-/* The 2025 archive moves continuously, keeping the full image proportions. */
+/* Journey filmstrips move continuously, keeping the full image proportions. */
 main#main .about-journey .history-timeline .history-entry.is-active .history-smooth-gallery {
   width: 100%;
   height: auto;
