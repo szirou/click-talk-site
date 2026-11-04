@@ -79,6 +79,7 @@ const copy = {
     trainingCampusPractice: "Questions and shared observations help connect classroom knowledge with practical workflows, giving students a clearer view of the skills and collaboration involved in content and commerce.",
     trainingLiveEight: "Content structure",
     navAbout: "About",
+    navContact: "Contact",
     navServices: "Team",
     navApproach: "Services",
     navCareers: "Project",
@@ -570,6 +571,7 @@ const copy = {
     trainingCampusObservation: "从产品准备、直播间布置到主播表达与现场协同，带学生认识镜头背后的分工。结合具体项目交流，理解每个环节为什么这样安排，以及团队如何把想法落实为一次完整的直播。",
     trainingCampusPractice: "通过现场提问、观察分享与案例讨论，把课堂知识与实际工作流程连接起来，让学生更直观地认识行业岗位、协作方式与所需能力。",
     navAbout: "关于我们",
+    navContact: "联系我们",
     navServices: "团队",
     navSubscriptions: "订阅套餐",
     navBrowseServices: "浏览全部服务",
@@ -2653,7 +2655,7 @@ syncProjectRoute();
 
 // Footer section links scroll explicitly, including when the hash is unchanged.
 // Service details and contact links retain their existing dialog handlers.
-document.querySelectorAll('.site-footer a[href^="#"]:not([data-detail-trigger]):not([data-inquiry-open])').forEach((link) => {
+document.querySelectorAll('.site-footer a[href^="#"]:not([data-detail-trigger]):not([data-inquiry-open]), [data-footer-contact]').forEach((link) => {
   link.addEventListener("click", (event) => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const hash = link.getAttribute("href");
