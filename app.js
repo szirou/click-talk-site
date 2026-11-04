@@ -2314,6 +2314,22 @@ document.querySelectorAll("[data-auto-carousel]").forEach((gallery) => {
   }, 4800);
 });
 
+// Keep the 2021 frame still while full images gently crossfade inside it.
+document.querySelectorAll("[data-history-fixed]").forEach((gallery) => {
+  const images = [...gallery.querySelectorAll("img")];
+  let activeIndex = 0;
+  window.setInterval(() => {
+    if (document.hidden || !gallery.closest(".history-entry")?.classList.contains("is-active")) return;
+    const nextIndex = (activeIndex + 1) % images.length;
+    if (!images[nextIndex].complete || !images[nextIndex].naturalWidth) return;
+    images[activeIndex].classList.remove("is-active");
+    images[activeIndex].setAttribute("aria-hidden", "true");
+    images[nextIndex].classList.add("is-active");
+    images[nextIndex].removeAttribute("aria-hidden");
+    activeIndex = nextIndex;
+  }, 4800);
+});
+
 // A seamless filmstrip for journey photographs and video.
 document.querySelectorAll("[data-history-smooth]").forEach((gallery) => {
   const track = gallery.querySelector(".history-smooth-track");
