@@ -7169,22 +7169,45 @@ main#main > #approach { display: none !important; }
   place-items: center;
   border: 2px solid var(--paper);
   border-radius: 50%;
-  background: var(--coral);
+  background: rgba(255, 111, 91, .1);
   box-shadow: 0 3px 12px rgba(17, 17, 17, .32);
-  color: var(--white);
+  color: transparent;
   cursor: pointer;
   font-size: clamp(9px, 1vw, 12px);
   font-weight: 700;
   transform: translate(-50%, -50%);
-  transition: background 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease, background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
   z-index: 2;
+}
+
+.team-photo-stage.is-open .team-photo-hotspot {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.team-photo-hotspot::after {
+  width: 7px;
+  height: 7px;
+  border: 2px solid var(--paper);
+  border-radius: 50%;
+  background: var(--coral);
+  content: "";
+}
+
+.team-photo-hotspot--pet {
+  border-color: var(--coral);
+}
+
+.team-photo-hotspot--pet::after {
+  background: var(--ink);
 }
 
 .team-photo-hotspot:hover,
 .team-photo-hotspot:focus-visible,
 .team-photo-hotspot.is-active {
-  background: var(--ink);
-  color: var(--paper);
+  background: rgba(255, 111, 91, .3);
   box-shadow: 0 0 0 4px rgba(255, 111, 91, .28), 0 4px 16px rgba(17, 17, 17, .38);
   transform: translate(-50%, -50%) scale(1.12);
 }
@@ -7192,6 +7215,43 @@ main#main > #approach { display: none !important; }
 .team-photo-hotspot:focus-visible {
   outline: 2px solid var(--coral);
   outline-offset: 3px;
+}
+
+.team-photo-open {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 18px;
+  border: 1px solid rgba(255, 255, 255, .88);
+  border-radius: 999px;
+  background: rgba(18, 58, 99, .84);
+  color: var(--white);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  transform: none;
+  transition: opacity 220ms ease, background 180ms ease, transform 180ms ease;
+  z-index: 3;
+}
+
+.team-photo-open:hover,
+.team-photo-open:focus-visible {
+  background: var(--coral);
+  transform: scale(1.04);
+}
+
+.team-photo-open:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 3px;
+}
+
+.team-photo-stage.is-open .team-photo-open {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .team-photo-profile {

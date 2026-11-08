@@ -342,6 +342,7 @@ const copy = {
     teamPhotoTitle: "The people behind\nthe work.",
     teamPhotoIntro: "Click a face to meet the people who keep strategy, content and commerce moving.",
     teamPhotoHint: "Select another face on the photo.",
+    teamPhotoOpen: "Meet the team",
     teamMetaLabel: "CLICK TALK / HANGZHOU / WORLDWIDE",
     teamTenure: "In the business since 2020",
     projectFocusLabel: "FOCUS",
@@ -836,6 +837,7 @@ const copy = {
     teamPhotoTitle: "一起把事情\n做好的人。",
     teamPhotoIntro: "点击照片中的人物，了解让策略、内容与商业持续运转的团队成员。",
     teamPhotoHint: "点击照片中的其他人物。",
+    teamPhotoOpen: "认识团队",
     teamMetaLabel: "CLICK TALK / 杭州 / 面向全球",
     teamTenure: "自 2020 年起深耕跨境业务",
     projectFocusLabel: "重点",
@@ -2737,6 +2739,9 @@ const kollektivaSlides = [
   { name: "Team member 08", role: "Click Talk Team", description: "A member of the wider Click Talk team, helping turn shared ideas into clear, practical work across markets." },
   { name: "Team member 09", role: "Click Talk Team", description: "Part of the team behind the scenes, bringing care, energy and a collaborative point of view to each project." },
   { name: "Team member 10", role: "Click Talk Team", description: "One of the people who make Click Talk feel connected, capable and ready for the next project." },
+  { name: "Team member 11", role: "Click Talk Team", description: "A teammate contributing to the everyday coordination, care and momentum behind each project." },
+  { name: "Team member 12", role: "Click Talk Team", description: "Part of the wider team bringing different perspectives together around the work." },
+  { name: "OUNI", role: "Click Talk Team Dog", description: "The team’s four-legged companion, bringing calm, warmth and a little extra joy to the office." },
 ];
 const kollektivaSlidesZh = [
   { name: "Chris", role: "创始人兼 CEO", description: "Chris 负责 Click Talk 的整体方向，带领团队以扎实运营、优秀人才与全球增长为核心持续前进。" },
@@ -2749,8 +2754,13 @@ const kollektivaSlidesZh = [
   { name: "团队成员 08", role: "Click Talk 团队", description: "Click Talk 团队的一员，把共同想法转化为清晰、可执行并能连接不同市场的工作。" },
   { name: "团队成员 09", role: "Click Talk 团队", description: "负责项目背后的协作与推进，用细致、能量和独特视角支持每一次工作。" },
   { name: "团队成员 10", role: "Click Talk 团队", description: "让 Click Talk 保持连接、专业并时刻准备好迎接下一个项目的一员。" },
+  { name: "团队成员 11", role: "Click Talk 团队", description: "参与日常协作、推进与支持项目的一员，让每一次工作都更有节奏。" },
+  { name: "团队成员 12", role: "Click Talk 团队", description: "把不同视角带到同一张桌边，共同完成每一个项目的一员。" },
+  { name: "OUNI", role: "Click Talk 团队狗狗", description: "团队的四脚伙伴，为办公室带来安静、温暖和更多快乐。" },
 ];
 const kollektivaAvatars = Array.from(kollektivaDetail.querySelectorAll("[data-kollektiva-avatar]"));
+const teamPhotoStage = kollektivaDetail.querySelector("[data-team-photo-stage]");
+const teamPhotoOpen = kollektivaDetail.querySelector("[data-team-photo-open]");
 const kollektivaDescription = kollektivaDetail.querySelector("[data-kollektiva-description]");
 const kollektivaName = kollektivaDetail.querySelector("[data-kollektiva-name]");
 const kollektivaRole = kollektivaDetail.querySelector("[data-kollektiva-role]");
@@ -2775,6 +2785,14 @@ function renderKollektiva(index) {
     element.classList.add("is-changing");
   });
 }
+
+const openTeamPhoto = () => {
+  teamPhotoStage.classList.add("is-open");
+  teamPhotoOpen.setAttribute("aria-expanded", "true");
+  kollektivaAvatars[0].focus();
+};
+teamPhotoOpen.addEventListener("click", openTeamPhoto);
+teamPhotoStage.querySelector("img")?.addEventListener("click", openTeamPhoto);
 
 kollektivaAvatars.forEach((avatar) => {
   avatar.addEventListener("click", () => renderKollektiva(Number(avatar.dataset.kollektivaAvatar)));

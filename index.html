@@ -8,8 +8,8 @@
       content="A Hangzhou-based international digital marketing and e-commerce company helping brands grow globally through TikTok and social commerce."
     />
     <title>Click Talk — Cross-border TikTok &amp; Social Commerce</title>
-    <link rel="preload" href="./app.js?v=20261108-team-photo" as="script" fetchpriority="high" />
-    <link rel="stylesheet" href="./styles.css?v=20261108-team-photo" />
+    <link rel="preload" href="./app.js?v=20261108-team-photo-v2" as="script" fetchpriority="high" />
+    <link rel="stylesheet" href="./styles.css?v=20261108-team-photo-v2" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   </head>
   <body>
@@ -433,22 +433,26 @@
           <p data-copy="teamPhotoIntro">Click a face to meet the people who keep strategy, content and commerce moving.</p>
         </div>
         <div class="team-photo-layout">
-          <div class="team-photo-stage" role="group" aria-label="Click Talk team group photo">
+          <div class="team-photo-stage" role="group" aria-label="Click Talk team group photo" data-team-photo-stage>
             <img src="./assets/team-group-2026-11.jpeg" alt="Click Talk team group photo" />
-            <button class="team-photo-hotspot is-active" type="button" aria-label="Show Chris" aria-pressed="true" data-kollektiva-avatar="0" style="--x:33.7%;--y:20.5%"><span>01</span></button>
-            <button class="team-photo-hotspot" type="button" aria-label="Show Eve" aria-pressed="false" data-kollektiva-avatar="1" style="--x:44.3%;--y:14.4%"><span>02</span></button>
-            <button class="team-photo-hotspot" type="button" aria-label="Show Ouma" aria-pressed="false" data-kollektiva-avatar="2" style="--x:63.5%;--y:19.2%"><span>03</span></button>
-            <button class="team-photo-hotspot" type="button" aria-label="Show Candy" aria-pressed="false" data-kollektiva-avatar="3" style="--x:21.1%;--y:34.1%"><span>04</span></button>
-            <button class="team-photo-hotspot" type="button" aria-label="Show Lisa" aria-pressed="false" data-kollektiva-avatar="4" style="--x:47.1%;--y:34.1%"><span>05</span></button>
-            <button class="team-photo-hotspot" type="button" aria-label="Show Asia" aria-pressed="false" data-kollektiva-avatar="5" style="--x:22.3%;--y:51.3%"><span>06</span></button>
-            <button class="team-photo-hotspot" type="button" aria-label="Show Mels" aria-pressed="false" data-kollektiva-avatar="6" style="--x:39%;--y:49.3%"><span>07</span></button>
-            <button class="team-photo-hotspot" type="button" aria-label="Show team member 08" aria-pressed="false" data-kollektiva-avatar="7" style="--x:51.1%;--y:52.9%"><span>08</span></button>
-            <button class="team-photo-hotspot" type="button" aria-label="Show team member 09" aria-pressed="false" data-kollektiva-avatar="8" style="--x:15.4%;--y:78.7%"><span>09</span></button>
-            <button class="team-photo-hotspot" type="button" aria-label="Show team member 10" aria-pressed="false" data-kollektiva-avatar="9" style="--x:88.5%;--y:53.2%"><span>10</span></button>
+            <button class="team-photo-open" type="button" data-team-photo-open><span data-copy="teamPhotoOpen">Meet the team</span><span aria-hidden="true">↗</span></button>
+            <button class="team-photo-hotspot" type="button" aria-label="Show Chris" aria-pressed="false" data-kollektiva-avatar="0" style="--x:33.7%;--y:20.5%"></button>
+            <button class="team-photo-hotspot" type="button" aria-label="Show Eve" aria-pressed="false" data-kollektiva-avatar="1" style="--x:44.3%;--y:14.4%"></button>
+            <button class="team-photo-hotspot" type="button" aria-label="Show Ouma" aria-pressed="false" data-kollektiva-avatar="2" style="--x:63.5%;--y:19.2%"></button>
+            <button class="team-photo-hotspot" type="button" aria-label="Show Candy" aria-pressed="false" data-kollektiva-avatar="3" style="--x:21.1%;--y:34.1%"></button>
+            <button class="team-photo-hotspot" type="button" aria-label="Show Lisa" aria-pressed="false" data-kollektiva-avatar="4" style="--x:47.1%;--y:34.1%"></button>
+            <button class="team-photo-hotspot" type="button" aria-label="Show Asia" aria-pressed="false" data-kollektiva-avatar="5" style="--x:22.3%;--y:51.3%"></button>
+            <button class="team-photo-hotspot" type="button" aria-label="Show Mels" aria-pressed="false" data-kollektiva-avatar="6" style="--x:39%;--y:49.3%"></button>
+            <button class="team-photo-hotspot" type="button" aria-label="Show team member 08" aria-pressed="false" data-kollektiva-avatar="7" style="--x:51.1%;--y:52.9%"></button>
+            <button class="team-photo-hotspot" type="button" aria-label="Show team member 09" aria-pressed="false" data-kollektiva-avatar="8" style="--x:15.4%;--y:78.7%"></button>
+            <button class="team-photo-hotspot" type="button" aria-label="Show team member 10" aria-pressed="false" data-kollektiva-avatar="9" style="--x:88.5%;--y:53.2%"></button>
+            <button class="team-photo-hotspot" type="button" aria-label="Show team member 11" aria-pressed="false" data-kollektiva-avatar="10" style="--x:27.5%;--y:34%"></button>
+            <button class="team-photo-hotspot" type="button" aria-label="Show team member 12" aria-pressed="false" data-kollektiva-avatar="11" style="--x:43.5%;--y:26%"></button>
+            <button class="team-photo-hotspot team-photo-hotspot--pet" type="button" aria-label="Show OUNI" aria-pressed="false" data-kollektiva-avatar="12" style="--x:67%;--y:55%"></button>
           </div>
           <aside class="team-photo-profile" aria-live="polite">
             <p class="team-photo-profile-eyebrow" data-copy="teamMetaLabel">CLICK TALK / HANGZHOU / WORLDWIDE</p>
-            <p class="team-photo-count"><b data-team-current>01</b> / <span>10</span></p>
+            <p class="team-photo-count"><b data-team-current>01</b> / <span>13</span></p>
             <h3 class="team-photo-person-name" data-kollektiva-name>Chris</h3>
             <p class="team-photo-person-role" data-kollektiva-role>Founder &amp; CEO</p>
             <p class="team-photo-description" data-kollektiva-description>Chris leads Click Talk and sets the direction for a team built around sharp operations, strong talent and global growth.</p>
@@ -897,7 +901,7 @@
       </div>
     </footer>
 
-    <script src="./app.js?v=20261108-team-photo"></script>
+    <script src="./app.js?v=20261108-team-photo-v2"></script>
     <script src="./infinite-spiral.js?v=20261019-restored-helix"></script>
   </body>
 </html>
