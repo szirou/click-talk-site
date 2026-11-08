@@ -7098,6 +7098,10 @@ main#main > #approach { display: none !important; }
   scroll-margin-top: var(--header-h);
 }
 
+main > section#team {
+  scroll-margin-top: var(--header-h);
+}
+
 .team-photo-heading {
   display: grid;
   grid-template-columns: 1fr minmax(280px, 430px);
@@ -7302,11 +7306,11 @@ main#main > #approach { display: none !important; }
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    height: calc(100svh - var(--header-h));
-    min-height: 560px;
+    height: auto;
+    min-height: 0;
     padding-top: clamp(28px, 4vh, 48px);
     padding-bottom: clamp(28px, 4vh, 48px);
-    overflow: hidden;
+    overflow: visible;
   }
 
   .team-photo-heading {
@@ -7319,7 +7323,7 @@ main#main > #approach { display: none !important; }
   }
 
   .team-photo-layout {
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     width: 100%;
     min-height: 0;
     align-items: stretch;
