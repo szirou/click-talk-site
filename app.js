@@ -2760,7 +2760,7 @@ const kollektivaSlidesZh = [
 ];
 const kollektivaAvatars = Array.from(kollektivaDetail.querySelectorAll("[data-kollektiva-avatar]"));
 const teamPhotoStage = kollektivaDetail.querySelector("[data-team-photo-stage]");
-const teamPhotoOpen = kollektivaDetail.querySelector("[data-team-photo-open]");
+const teamPhotoLayout = kollektivaDetail.querySelector(".team-photo-layout");
 const kollektivaDescription = kollektivaDetail.querySelector("[data-kollektiva-description]");
 const kollektivaName = kollektivaDetail.querySelector("[data-kollektiva-name]");
 const kollektivaRole = kollektivaDetail.querySelector("[data-kollektiva-role]");
@@ -2788,10 +2788,9 @@ function renderKollektiva(index) {
 
 const openTeamPhoto = () => {
   teamPhotoStage.classList.add("is-open");
-  teamPhotoOpen.setAttribute("aria-expanded", "true");
+  teamPhotoLayout.classList.add("is-open");
   kollektivaAvatars[0].focus();
 };
-teamPhotoOpen.addEventListener("click", openTeamPhoto);
 teamPhotoStage.querySelector("img")?.addEventListener("click", openTeamPhoto);
 
 kollektivaAvatars.forEach((avatar) => {

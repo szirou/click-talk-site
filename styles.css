@@ -7143,6 +7143,14 @@ main#main > #approach { display: none !important; }
   margin: 0 auto;
 }
 
+.team-photo-layout:not(.is-open) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.team-photo-layout:not(.is-open) .team-photo-profile {
+  display: none;
+}
+
 .team-photo-stage {
   position: relative;
   overflow: hidden;
@@ -7156,6 +7164,7 @@ main#main > #approach { display: none !important; }
   display: block;
   width: 100%;
   height: auto;
+  cursor: pointer;
 }
 
 .team-photo-hotspot {
@@ -7163,18 +7172,17 @@ main#main > #approach { display: none !important; }
   top: var(--y);
   left: var(--x);
   display: grid;
-  width: clamp(28px, 3.2vw, 42px);
-  height: clamp(28px, 3.2vw, 42px);
+  width: var(--size);
+  aspect-ratio: 1;
+  height: auto;
   padding: 0;
   place-items: center;
-  border: 2px solid var(--paper);
+  border: clamp(2px, .25vw, 4px) solid var(--paper);
   border-radius: 50%;
-  background: rgba(255, 111, 91, .1);
+  background: transparent;
   box-shadow: 0 3px 12px rgba(17, 17, 17, .32);
   color: transparent;
   cursor: pointer;
-  font-size: clamp(9px, 1vw, 12px);
-  font-weight: 700;
   transform: translate(-50%, -50%);
   opacity: 0;
   pointer-events: none;
@@ -7187,28 +7195,16 @@ main#main > #approach { display: none !important; }
   pointer-events: auto;
 }
 
-.team-photo-hotspot::after {
-  width: 7px;
-  height: 7px;
-  border: 2px solid var(--paper);
-  border-radius: 50%;
-  background: var(--coral);
-  content: "";
-}
-
 .team-photo-hotspot--pet {
-  border-color: var(--coral);
-}
-
-.team-photo-hotspot--pet::after {
-  background: var(--ink);
+  border-color: var(--ink);
 }
 
 .team-photo-hotspot:hover,
 .team-photo-hotspot:focus-visible,
 .team-photo-hotspot.is-active {
-  background: rgba(255, 111, 91, .3);
-  box-shadow: 0 0 0 4px rgba(255, 111, 91, .28), 0 4px 16px rgba(17, 17, 17, .38);
+  background: rgba(255, 255, 255, .06);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .35);
+  border-color: var(--ink);
   transform: translate(-50%, -50%) scale(1.12);
 }
 
@@ -7217,55 +7213,36 @@ main#main > #approach { display: none !important; }
   outline-offset: 3px;
 }
 
-.team-photo-open {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 13px 18px;
-  border: 1px solid rgba(255, 255, 255, .88);
-  border-radius: 999px;
-  background: rgba(18, 58, 99, .84);
-  color: var(--white);
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .04em;
-  transform: none;
-  transition: opacity 220ms ease, background 180ms ease, transform 180ms ease;
-  z-index: 3;
-}
-
-.team-photo-open:hover,
-.team-photo-open:focus-visible {
-  background: var(--coral);
-  transform: scale(1.04);
-}
-
-.team-photo-open:focus-visible {
-  outline: 2px solid var(--paper);
-  outline-offset: 3px;
-}
-
-.team-photo-stage.is-open .team-photo-open {
-  opacity: 0;
-  pointer-events: none;
-}
-
 .team-photo-profile {
   align-self: stretch;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   min-height: 300px;
-  padding: clamp(22px, 3vw, 38px) 0;
-  border-top: 1px solid rgba(18, 58, 99, .24);
-  border-bottom: 1px solid rgba(18, 58, 99, .24);
+  padding: clamp(28px, 3.5vw, 48px);
+  border: 0;
+  background: var(--ink);
+  color: var(--white);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 260ms ease, visibility 260ms ease;
+}
+
+.team-photo-layout.is-open .team-photo-profile {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .team-photo-profile-eyebrow { margin-bottom: auto; }
+
+.team-photo-profile-eyebrow,
+.team-photo-profile .team-photo-person-role,
+.team-photo-profile .team-photo-description,
+.team-photo-profile .team-photo-hint {
+  color: rgba(255, 255, 255, .72);
+}
 
 .team-photo-count {
   margin: 0 0 12px;
@@ -7276,7 +7253,7 @@ main#main > #approach { display: none !important; }
 
 .team-photo-person-name {
   margin: 0;
-  color: var(--ink);
+  color: var(--white);
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(36px, 4vw, 64px);
   font-weight: 400;
@@ -7285,7 +7262,7 @@ main#main > #approach { display: none !important; }
 
 .team-photo-person-role {
   margin: 14px 0 0;
-  color: rgba(18, 58, 99, .72);
+  color: rgba(255, 255, 255, .72);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: .04em;
@@ -7293,14 +7270,14 @@ main#main > #approach { display: none !important; }
 
 .team-photo-description {
   margin: 20px 0 0;
-  color: rgba(18, 58, 99, .78);
+  color: rgba(255, 255, 255, .78);
   font-size: 14px;
   line-height: 1.65;
 }
 
 .team-photo-hint {
   margin: 32px 0 0;
-  color: rgba(18, 58, 99, .48);
+  color: rgba(255, 255, 255, .52);
   font-size: 11px;
   letter-spacing: .04em;
 }
@@ -7317,7 +7294,55 @@ main#main > #approach { display: none !important; }
 @media (max-width: 520px) {
   .team-photo-section { padding-right: 16px; padding-left: 16px; }
   .team-photo-heading h2 { font-size: clamp(40px, 13vw, 62px); }
-  .team-photo-hotspot { width: 27px; height: 27px; font-size: 9px; }
+  .team-photo-hotspot { width: var(--size); height: auto; }
+}
+
+@media (min-width: 821px) {
+  .team-photo-section {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: calc(100svh - var(--header-h));
+    min-height: 560px;
+    padding-top: clamp(28px, 4vh, 48px);
+    padding-bottom: clamp(28px, 4vh, 48px);
+    overflow: hidden;
+  }
+
+  .team-photo-heading {
+    gap: 18px;
+    margin-bottom: clamp(18px, 3vh, 32px);
+  }
+
+  .team-photo-heading h2 {
+    font-size: clamp(38px, 5vw, 68px);
+  }
+
+  .team-photo-layout {
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 0;
+    align-items: stretch;
+  }
+
+  .team-photo-stage {
+    width: min(100%, calc((100svh - var(--header-h) - 210px) * 1.333333));
+    max-height: 100%;
+    aspect-ratio: 4 / 3;
+    justify-self: center;
+    min-height: 0;
+  }
+
+  .team-photo-stage > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .team-photo-profile {
+    min-height: 0;
+    overflow: auto;
+  }
 }
 
 .team-inline-section .kollektiva-meta {
