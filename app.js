@@ -339,6 +339,9 @@ const copy = {
     overseasPointTwo: "02 / LOCALIZATION",
     overseasPointThree: "03 / GROWTH PLANNING",
     teamDetailEyebrow: "CLICK TALK / THE TEAM",
+    teamPhotoTitle: "The people behind\nthe work.",
+    teamPhotoIntro: "Click a face to meet the people who keep strategy, content and commerce moving.",
+    teamPhotoHint: "Select another face on the photo.",
     teamMetaLabel: "CLICK TALK / HANGZHOU / WORLDWIDE",
     teamTenure: "In the business since 2020",
     projectFocusLabel: "FOCUS",
@@ -830,6 +833,9 @@ const copy = {
     overseasPointTwo: "02 / 本地化",
     overseasPointThree: "03 / 增长规划",
     teamDetailEyebrow: "CLICK TALK / 团队介绍",
+    teamPhotoTitle: "一起把事情\n做好的人。",
+    teamPhotoIntro: "点击照片中的人物，了解让策略、内容与商业持续运转的团队成员。",
+    teamPhotoHint: "点击照片中的其他人物。",
     teamMetaLabel: "CLICK TALK / 杭州 / 面向全球",
     teamTenure: "自 2020 年起深耕跨境业务",
     projectFocusLabel: "重点",
@@ -2728,6 +2734,9 @@ const kollektivaSlides = [
     role: "Livestream Host",
     description: "Mels brings a distinct point of view to the live room, building trust through an easy rhythm, thoughtful details and genuine connection.",
   },
+  { name: "Team member 08", role: "Click Talk Team", description: "A member of the wider Click Talk team, helping turn shared ideas into clear, practical work across markets." },
+  { name: "Team member 09", role: "Click Talk Team", description: "Part of the team behind the scenes, bringing care, energy and a collaborative point of view to each project." },
+  { name: "Team member 10", role: "Click Talk Team", description: "One of the people who make Click Talk feel connected, capable and ready for the next project." },
 ];
 const kollektivaSlidesZh = [
   { name: "Chris", role: "创始人兼 CEO", description: "Chris 负责 Click Talk 的整体方向，带领团队以扎实运营、优秀人才与全球增长为核心持续前进。" },
@@ -2737,25 +2746,26 @@ const kollektivaSlidesZh = [
   { name: "Lisa", role: "直播主播", description: "Lisa 用亲切的镜头表现和清晰的产品表达，创造有用、难忘又真实的直播时刻。" },
   { name: "Asia", role: "直播主播", description: "Asia 为每场直播带来节奏与个性，在保持现场热度的同时，让产品价值清晰可见。" },
   { name: "Mels", role: "直播主播", description: "Mels 用独特的视角与自然的节奏建立信任，让直播间产生真实连接。" },
+  { name: "团队成员 08", role: "Click Talk 团队", description: "Click Talk 团队的一员，把共同想法转化为清晰、可执行并能连接不同市场的工作。" },
+  { name: "团队成员 09", role: "Click Talk 团队", description: "负责项目背后的协作与推进，用细致、能量和独特视角支持每一次工作。" },
+  { name: "团队成员 10", role: "Click Talk 团队", description: "让 Click Talk 保持连接、专业并时刻准备好迎接下一个项目的一员。" },
 ];
-const kollektivaBackgrounds = Array.from(kollektivaDetail.querySelectorAll("[data-kollektiva-background]"));
 const kollektivaAvatars = Array.from(kollektivaDetail.querySelectorAll("[data-kollektiva-avatar]"));
 const kollektivaDescription = kollektivaDetail.querySelector("[data-kollektiva-description]");
 const kollektivaName = kollektivaDetail.querySelector("[data-kollektiva-name]");
 const kollektivaRole = kollektivaDetail.querySelector("[data-kollektiva-role]");
+const kollektivaCurrent = kollektivaDetail.querySelector("[data-team-current]");
 let kollektivaActive = 0;
 
 function renderKollektiva(index) {
   kollektivaActive = (index + kollektivaSlides.length) % kollektivaSlides.length;
   const slide = (activeLanguage === "zh" ? kollektivaSlidesZh : kollektivaSlides)[kollektivaActive];
-  kollektivaBackgrounds.forEach((background, backgroundIndex) => {
-    background.classList.toggle("is-active", backgroundIndex === kollektivaActive);
-  });
   kollektivaAvatars.forEach((avatar, avatarIndex) => {
     const active = avatarIndex === kollektivaActive;
     avatar.classList.toggle("is-active", active);
-    avatar.setAttribute("aria-selected", String(active));
+    avatar.setAttribute("aria-pressed", String(active));
   });
+  kollektivaCurrent.textContent = String(kollektivaActive + 1).padStart(2, "0");
   kollektivaDescription.textContent = slide.description;
   kollektivaName.textContent = slide.name;
   kollektivaRole.textContent = slide.role;

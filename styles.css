@@ -7088,6 +7088,178 @@ main#main > #approach { display: none !important; }
   color: var(--cyan);
 }
 
+/* Team group portrait with direct, face-level profile hotspots. */
+.team-photo-section {
+  position: relative;
+  z-index: 1;
+  padding: clamp(72px, 10vw, 132px) max(24px, 5vw) clamp(80px, 11vw, 150px);
+  background: var(--paper);
+  color: var(--ink);
+  scroll-margin-top: var(--header-h);
+}
+
+.team-photo-heading {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 430px);
+  align-items: end;
+  gap: 32px;
+  max-width: 1280px;
+  margin: 0 auto clamp(28px, 4vw, 56px);
+}
+
+.team-photo-heading .section-eyebrow,
+.team-photo-profile-eyebrow {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: rgba(18, 58, 99, .62);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+}
+
+.team-photo-heading h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 6vw, 92px);
+  font-weight: 400;
+  line-height: .95;
+}
+
+.team-photo-heading > p:last-child {
+  max-width: 360px;
+  margin: 0 0 6px;
+  color: rgba(18, 58, 99, .72);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.team-photo-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 320px);
+  align-items: end;
+  gap: clamp(24px, 5vw, 80px);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.team-photo-stage {
+  position: relative;
+  overflow: hidden;
+  background: #d9d9d5;
+  border: 1px solid rgba(18, 58, 99, .16);
+  box-shadow: 0 16px 36px rgba(18, 58, 99, .12);
+  isolation: isolate;
+}
+
+.team-photo-stage > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.team-photo-hotspot {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  display: grid;
+  width: clamp(28px, 3.2vw, 42px);
+  height: clamp(28px, 3.2vw, 42px);
+  padding: 0;
+  place-items: center;
+  border: 2px solid var(--paper);
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 3px 12px rgba(17, 17, 17, .32);
+  color: var(--white);
+  cursor: pointer;
+  font-size: clamp(9px, 1vw, 12px);
+  font-weight: 700;
+  transform: translate(-50%, -50%);
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  z-index: 2;
+}
+
+.team-photo-hotspot:hover,
+.team-photo-hotspot:focus-visible,
+.team-photo-hotspot.is-active {
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: 0 0 0 4px rgba(255, 111, 91, .28), 0 4px 16px rgba(17, 17, 17, .38);
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+.team-photo-hotspot:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 3px;
+}
+
+.team-photo-profile {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 300px;
+  padding: clamp(22px, 3vw, 38px) 0;
+  border-top: 1px solid rgba(18, 58, 99, .24);
+  border-bottom: 1px solid rgba(18, 58, 99, .24);
+}
+
+.team-photo-profile-eyebrow { margin-bottom: auto; }
+
+.team-photo-count {
+  margin: 0 0 12px;
+  color: var(--coral);
+  font-size: 11px;
+  letter-spacing: .12em;
+}
+
+.team-photo-person-name {
+  margin: 0;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(36px, 4vw, 64px);
+  font-weight: 400;
+  line-height: .98;
+}
+
+.team-photo-person-role {
+  margin: 14px 0 0;
+  color: rgba(18, 58, 99, .72);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.team-photo-description {
+  margin: 20px 0 0;
+  color: rgba(18, 58, 99, .78);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.team-photo-hint {
+  margin: 32px 0 0;
+  color: rgba(18, 58, 99, .48);
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+
+@media (max-width: 820px) {
+  .team-photo-heading { grid-template-columns: 1fr; gap: 20px; }
+  .team-photo-heading > p:last-child { max-width: 520px; }
+  .team-photo-layout { grid-template-columns: 1fr; gap: 28px; }
+  .team-photo-profile { min-height: 0; padding: 24px 0 0; border-bottom: 0; }
+  .team-photo-profile-eyebrow { margin-bottom: 28px; }
+  .team-photo-hint { margin-top: 24px; }
+}
+
+@media (max-width: 520px) {
+  .team-photo-section { padding-right: 16px; padding-left: 16px; }
+  .team-photo-heading h2 { font-size: clamp(40px, 13vw, 62px); }
+  .team-photo-hotspot { width: 27px; height: 27px; font-size: 9px; }
+}
+
 .team-inline-section .kollektiva-meta {
   border-top-color: rgba(18, 58, 99, .24);
 }
