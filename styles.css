@@ -7177,14 +7177,11 @@ main > section#team {
   height: 100%;
   padding: 0;
   border: 0;
-  background-image: url("./assets/team-group-2026-11.jpeg");
-  background-position: center;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background: rgba(255, 178, 92, .24);
   color: transparent;
   cursor: pointer;
   clip-path: var(--shape);
-  filter: brightness(1.16) saturate(1.08) drop-shadow(0 0 2px rgba(255, 255, 255, .98)) drop-shadow(0 0 8px rgba(255, 115, 92, .95));
+  filter: blur(1px) drop-shadow(0 0 3px rgba(255, 255, 255, .98)) drop-shadow(0 0 10px rgba(255, 115, 92, .8));
   opacity: 0;
   pointer-events: auto;
   transition: opacity 180ms ease, filter 180ms ease;
@@ -7199,7 +7196,7 @@ main > section#team {
 
 .team-photo-hotspot:focus-visible {
   outline: none;
-  filter: brightness(1.18) saturate(1.1) drop-shadow(0 0 3px rgba(255, 255, 255, 1)) drop-shadow(0 0 11px rgba(255, 115, 92, 1));
+  filter: blur(1px) drop-shadow(0 0 4px rgba(255, 255, 255, 1)) drop-shadow(0 0 13px rgba(255, 115, 92, .92));
 }
 
 .team-photo-profile {
