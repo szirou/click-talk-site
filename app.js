@@ -2740,7 +2740,6 @@ const kollektivaSlides = [
   { name: "Team member 09", role: "Click Talk Team", description: "Part of the team behind the scenes, bringing care, energy and a collaborative point of view to each project." },
   { name: "Team member 10", role: "Click Talk Team", description: "One of the people who make Click Talk feel connected, capable and ready for the next project." },
   { name: "Team member 11", role: "Click Talk Team", description: "A teammate contributing to the everyday coordination, care and momentum behind each project." },
-  { name: "Team member 12", role: "Click Talk Team", description: "Part of the wider team bringing different perspectives together around the work." },
   { name: "OUNI", role: "Click Talk Team Dog", description: "The team’s four-legged companion, bringing calm, warmth and a little extra joy to the office." },
 ];
 const kollektivaSlidesZh = [
@@ -2755,7 +2754,6 @@ const kollektivaSlidesZh = [
   { name: "团队成员 09", role: "Click Talk 团队", description: "负责项目背后的协作与推进，用细致、能量和独特视角支持每一次工作。" },
   { name: "团队成员 10", role: "Click Talk 团队", description: "让 Click Talk 保持连接、专业并时刻准备好迎接下一个项目的一员。" },
   { name: "团队成员 11", role: "Click Talk 团队", description: "参与日常协作、推进与支持项目的一员，让每一次工作都更有节奏。" },
-  { name: "团队成员 12", role: "Click Talk 团队", description: "把不同视角带到同一张桌边，共同完成每一个项目的一员。" },
   { name: "OUNI", role: "Click Talk 团队狗狗", description: "团队的四脚伙伴，为办公室带来安静、温暖和更多快乐。" },
 ];
 const kollektivaAvatars = Array.from(kollektivaDetail.querySelectorAll("[data-kollektiva-avatar]"));
