@@ -1158,6 +1158,47 @@ const mobileMenu = document.querySelector("#mobile-menu");
 const siteHeader = document.querySelector(".site-header");
 let activeLanguage = "en";
 
+// Lightweight static-site equivalent of SpecularButton: the conic edge light
+// follows the pointer without requiring a React runtime or WebGL canvas.
+document.querySelectorAll("[data-specular-button]").forEach((button) => {
+  let raf = 0;
+  let targetAngle = 0;
+  let currentAngle = 0;
+  let targetNear = 0.35;
+  let currentNear = 0.35;
+  const frame = () => {
+    currentAngle += (targetAngle - currentAngle) * .16;
+    currentNear += (targetNear - currentNear) * .16;
+    button.style.setProperty("--sb-angle", `${currentAngle}deg`);
+    button.style.setProperty("--sb-near", currentNear.toFixed(3));
+    if (Math.abs(targetAngle - currentAngle) > .08 || Math.abs(targetNear - currentNear) > .004) {
+      raf = requestAnimationFrame(frame);
+    } else {
+      raf = 0;
+    }
+  };
+  const wake = () => {
+    if (!raf) raf = requestAnimationFrame(frame);
+  };
+  button.addEventListener("pointermove", (event) => {
+    const rect = button.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    targetAngle = Math.atan2(y - rect.height / 2, x - rect.width / 2) * 180 / Math.PI + 90;
+    targetNear = 1;
+    button.style.setProperty("--sb-pointer-x", `${(x / rect.width) * 100}%`);
+    button.style.setProperty("--sb-pointer-y", `${(y / rect.height) * 100}%`);
+    wake();
+  });
+  button.addEventListener("pointerleave", () => {
+    targetNear = .35;
+    wake();
+  });
+  button.addEventListener("focus", () => { targetNear = 1; wake(); });
+  button.addEventListener("blur", () => { targetNear = .35; wake(); });
+  wake();
+});
+
 function updateHeaderState() {
   if (!siteHeader) return;
   siteHeader.classList.toggle("is-scrolled", window.scrollY > 24);
