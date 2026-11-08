@@ -2784,15 +2784,12 @@ function renderKollektiva(index) {
   });
 }
 
-const openTeamPhoto = () => {
-  teamPhotoStage.classList.add("is-open");
-  teamPhotoLayout.classList.add("is-open");
-  kollektivaAvatars[0].focus();
-};
-teamPhotoStage.querySelector("img")?.addEventListener("click", openTeamPhoto);
-
 kollektivaAvatars.forEach((avatar) => {
-  avatar.addEventListener("click", () => renderKollektiva(Number(avatar.dataset.kollektivaAvatar)));
+  avatar.addEventListener("click", () => {
+    teamPhotoStage.classList.add("is-open");
+    teamPhotoLayout.classList.add("is-open");
+    renderKollektiva(Number(avatar.dataset.kollektivaAvatar));
+  });
   avatar.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
       event.preventDefault();

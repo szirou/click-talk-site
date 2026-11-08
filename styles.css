@@ -7168,53 +7168,38 @@ main > section#team {
   display: block;
   width: 100%;
   height: auto;
-  cursor: pointer;
 }
 
 .team-photo-hotspot {
   position: absolute;
-  top: var(--y);
-  left: var(--x);
-  display: grid;
-  width: var(--size);
-  aspect-ratio: 1;
-  height: auto;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   padding: 0;
-  place-items: center;
-  border: clamp(2px, .25vw, 4px) solid var(--paper);
-  border-radius: 50%;
-  background: transparent;
-  box-shadow: 0 3px 12px rgba(17, 17, 17, .32);
+  border: 0;
+  background-image: url("./assets/team-group-2026-11.jpeg");
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   color: transparent;
   cursor: pointer;
-  transform: translate(-50%, -50%);
+  clip-path: var(--shape);
+  filter: brightness(1.16) saturate(1.08) drop-shadow(0 0 2px rgba(255, 255, 255, .98)) drop-shadow(0 0 8px rgba(255, 115, 92, .95));
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 220ms ease, background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
-  z-index: 2;
-}
-
-.team-photo-stage.is-open .team-photo-hotspot {
-  opacity: 1;
   pointer-events: auto;
-}
-
-.team-photo-hotspot--pet {
-  border-color: var(--ink);
+  transition: opacity 180ms ease, filter 180ms ease;
+  z-index: 2;
 }
 
 .team-photo-hotspot:hover,
 .team-photo-hotspot:focus-visible,
-.team-photo-hotspot.is-active {
-  background: rgba(255, 255, 255, .06);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, .35);
-  border-color: var(--ink);
-  transform: translate(-50%, -50%) scale(1.12);
+.team-photo-stage.is-open .team-photo-hotspot.is-active {
+  opacity: 1;
 }
 
 .team-photo-hotspot:focus-visible {
-  outline: 2px solid var(--coral);
-  outline-offset: 3px;
+  outline: none;
+  filter: brightness(1.18) saturate(1.1) drop-shadow(0 0 3px rgba(255, 255, 255, 1)) drop-shadow(0 0 11px rgba(255, 115, 92, 1));
 }
 
 .team-photo-profile {
@@ -7298,7 +7283,6 @@ main > section#team {
 @media (max-width: 520px) {
   .team-photo-section { padding-right: 16px; padding-left: 16px; }
   .team-photo-heading h2 { font-size: clamp(40px, 13vw, 62px); }
-  .team-photo-hotspot { width: var(--size); height: auto; }
 }
 
 @media (min-width: 821px) {
