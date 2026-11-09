@@ -342,7 +342,11 @@ const copy = {
     teamPhotoTitle: "The people behind\nthe work.",
     teamPhotoIntro: "Click a face to meet the people who keep strategy, content and commerce moving.",
     teamPhotoHint: "Drag the badge to swing it. Click to turn it over.",
-    hairProfileVisit: "Visit TikTok profile ↗",
+    hairProfileVisit: "Visit TikTok profile",
+    hairProfileCategory: "Synthetic wigs. Live shopping.",
+    hairProfileFollowers: "Followers",
+    hairProfileLikes: "Likes",
+    hairProfileSnapshot: "Profile snapshot · supplied by the team",
     teamPhotoOpen: "Meet the team",
     teamMetaLabel: "CLICK TALK / HANGZHOU / WORLDWIDE",
     teamTenure: "In the business since 2020",
@@ -838,7 +842,11 @@ const copy = {
     teamPhotoTitle: "一起把事情\n做好的人。",
     teamPhotoIntro: "点击照片中的人物，了解让策略、内容与商业持续运转的团队成员。",
     teamPhotoHint: "拖动工牌让它摆动，点击工牌可翻面。",
-    hairProfileVisit: "查看 TikTok 主页 ↗",
+    hairProfileVisit: "查看 TikTok 主页",
+    hairProfileCategory: "时尚假发 · 直播购物",
+    hairProfileFollowers: "粉丝",
+    hairProfileLikes: "获赞",
+    hairProfileSnapshot: "账号数据来自团队提供的主页截图",
     teamPhotoOpen: "认识团队",
     teamMetaLabel: "CLICK TALK / 杭州 / 面向全球",
     teamTenure: "自 2020 年起深耕跨境业务",
@@ -2818,7 +2826,7 @@ function loadTeamBadgeScript() {
   if (teamBadgeScript) return teamBadgeScript;
   teamBadgeScript = new Promise((resolve, reject) => {
     const script = document.createElement("script");
-    script.src = "./team-lanyard.js?v=20261109-team-badge-v19";
+    script.src = "./team-lanyard.js?v=20261109-team-badge-v20";
     script.onload = resolve;
     script.onerror = () => { script.remove(); teamBadgeScript = null; reject(new Error("Lanyard could not load")); };
     document.head.append(script);
@@ -2836,7 +2844,10 @@ async function updateTeamBadge() {
   const profile = selectedTeamBadgeProfile();
   kollektivaDetail.querySelector("[data-badge-fallback-name]").textContent = profile.name;
   kollektivaDetail.querySelector("[data-badge-fallback-role]").textContent = profile.role;
+  kollektivaDetail.querySelector("[data-badge-fallback-description]").textContent = profile.description;
+  teamBadgeContainer.classList.remove("is-flipped");
   teamBadgeFlip.textContent = activeLanguage === "zh" ? "翻转工牌 ↻" : "Flip badge ↻";
+  teamBadgeFlip.hidden = false;
   if (teamBadgeInstance) { teamBadgeInstance.update(profile); return; }
   if (teamBadgePending) return;
   teamBadgePending = true;
@@ -2854,7 +2865,10 @@ async function updateTeamBadge() {
     teamBadgePending = false;
   }
 }
-teamBadgeFlip?.addEventListener("click", () => teamBadgeInstance?.flip());
+teamBadgeFlip?.addEventListener("click", () => {
+  if (teamBadgeInstance) teamBadgeInstance.flip();
+  else teamBadgeContainer?.classList.toggle("is-flipped");
+});
 
 function renderKollektiva(index) {
   kollektivaActive = (index + kollektivaSlides.length) % kollektivaSlides.length;
