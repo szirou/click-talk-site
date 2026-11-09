@@ -2774,8 +2774,8 @@ const kollektivaSlides = [
   },
   {
     name: "Deely",
-    role: "Livestream Host",
-    description: "Deely pairs a warm on-camera presence with a clear product story, creating live moments that feel useful, memorable and real.",
+    role: "Livestream Operations",
+    description: "Deely is part of Click Talk’s livestream operations team.",
   },
   {
     name: "Asia",
@@ -2798,7 +2798,7 @@ const kollektivaSlidesZh = [
   { name: "Wael", role: "直播运营", description: "Wael 是 Click Talk 直播运营团队的一员。" },
   { name: "团队成员 03", role: "Click Talk 团队", description: "Click Talk 团队的一员。" },
   { name: "Candy", role: "直播主播", description: "Candy 让直播电商更有温度、更有表达，也让观众自然地从兴趣走向行动。" },
-  { name: "Deely", role: "直播主播", description: "Deely 用亲切的镜头表现和清晰的产品表达，创造有用、难忘又真实的直播时刻。" },
+  { name: "Deely", role: "直播运营", description: "Deely 是 Click Talk 直播运营团队的一员。" },
   { name: "Asia", role: "直播主播", description: "Asia 为每场直播带来节奏与个性，在保持现场热度的同时，让产品价值清晰可见。" },
   { name: "Ouma", role: "直播主播", description: "Ouma 为直播间带来开放、自信的能量，把每一个产品瞬间变成值得停留和交流的理由。" },
   { name: "团队成员 08", role: "Click Talk 团队", description: "Click Talk 团队的一员，把共同想法转化为清晰、可执行并能连接不同市场的工作。" },
