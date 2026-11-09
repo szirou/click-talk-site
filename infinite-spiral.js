@@ -16,16 +16,12 @@
   const speed = 0.35, spacing = 60, cardWidth = 116, cardHeight = 140;
   const perspective = 1075, rotation = -18, centerScale = 1.16, edgeFade = 0.44, edgeBlur = 6.75;
   let progress = 0, target = 0, autoSpeed = 0;
-  // Read-only animation bridge for the background; no change to gallery motion.
-  const sharedMotion = { progress: 0 };
-  root.clickTalkSpiralState = sharedMotion;
   let hovered = false, visible = false, focused = false, pointerId = null;
   let lastY = 0, lastScrollY = window.scrollY;
   let bounds = root.getBoundingClientRect();
   let previousTime = performance.now(), frame = 0;
 
   function paint() {
-    sharedMotion.progress = progress;
     const half = cards.length / 2;
     const density = 12 / cards.length;
     const width = Math.max(bounds.width, 1), height = Math.max(bounds.height, 1);
