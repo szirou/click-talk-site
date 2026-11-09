@@ -341,7 +341,8 @@ const copy = {
     teamDetailEyebrow: "CLICK TALK / THE TEAM",
     teamPhotoTitle: "The people behind\nthe work.",
     teamPhotoIntro: "Click a face to meet the people who keep strategy, content and commerce moving.",
-    teamPhotoHint: "Select another face on the photo.",
+    teamPhotoHint: "Drag the badge to swing it. Click to turn it over.",
+    hairProfileVisit: "Visit TikTok profile ↗",
     teamPhotoOpen: "Meet the team",
     teamMetaLabel: "CLICK TALK / HANGZHOU / WORLDWIDE",
     teamTenure: "In the business since 2020",
@@ -836,7 +837,8 @@ const copy = {
     teamDetailEyebrow: "CLICK TALK / 团队介绍",
     teamPhotoTitle: "一起把事情\n做好的人。",
     teamPhotoIntro: "点击照片中的人物，了解让策略、内容与商业持续运转的团队成员。",
-    teamPhotoHint: "点击照片中的其他人物。",
+    teamPhotoHint: "拖动工牌让它摆动，点击工牌可翻面。",
+    hairProfileVisit: "查看 TikTok 主页 ↗",
     teamPhotoOpen: "认识团队",
     teamMetaLabel: "CLICK TALK / 杭州 / 面向全球",
     teamTenure: "自 2020 年起深耕跨境业务",
@@ -2805,6 +2807,54 @@ const kollektivaName = kollektivaDetail.querySelector("[data-kollektiva-name]");
 const kollektivaRole = kollektivaDetail.querySelector("[data-kollektiva-role]");
 const kollektivaCurrent = kollektivaDetail.querySelector("[data-team-current]");
 let kollektivaActive = 0;
+let teamBadgeInstance = null;
+let teamBadgePending = false;
+let teamBadgeScript = null;
+const teamBadgeContainer = kollektivaDetail.querySelector("[data-team-lanyard]");
+const teamBadgeFlip = kollektivaDetail.querySelector("[data-team-badge-flip]");
+
+function loadTeamBadgeScript() {
+  if (window.ClickTalkLanyard) return Promise.resolve();
+  if (teamBadgeScript) return teamBadgeScript;
+  teamBadgeScript = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = "./team-lanyard.js?v=20261109-team-badge-v19";
+    script.onload = resolve;
+    script.onerror = () => { script.remove(); teamBadgeScript = null; reject(new Error("Lanyard could not load")); };
+    document.head.append(script);
+  });
+  return teamBadgeScript;
+}
+
+function selectedTeamBadgeProfile() {
+  const person = (activeLanguage === "zh" ? kollektivaSlidesZh : kollektivaSlides)[kollektivaActive];
+  return { ...person, number: kollektivaActive + 1 };
+}
+
+async function updateTeamBadge() {
+  if (!teamBadgeContainer || !teamPhotoLayout.classList.contains("is-open")) return;
+  const profile = selectedTeamBadgeProfile();
+  kollektivaDetail.querySelector("[data-badge-fallback-name]").textContent = profile.name;
+  kollektivaDetail.querySelector("[data-badge-fallback-role]").textContent = profile.role;
+  teamBadgeFlip.textContent = activeLanguage === "zh" ? "翻转工牌 ↻" : "Flip badge ↻";
+  if (teamBadgeInstance) { teamBadgeInstance.update(profile); return; }
+  if (teamBadgePending) return;
+  teamBadgePending = true;
+  try {
+    await loadTeamBadgeScript();
+    teamBadgeInstance = await window.ClickTalkLanyard.mount(teamBadgeContainer, selectedTeamBadgeProfile());
+    if (teamBadgeInstance) {
+      // Read selection again: it may have changed while the image/GPU loaded.
+      teamBadgeInstance.update(selectedTeamBadgeProfile());
+      teamBadgeFlip.hidden = false;
+    }
+  } catch (error) {
+    console.warn("Using the static team badge:", error.message);
+  } finally {
+    teamBadgePending = false;
+  }
+}
+teamBadgeFlip?.addEventListener("click", () => teamBadgeInstance?.flip());
 
 function renderKollektiva(index) {
   kollektivaActive = (index + kollektivaSlides.length) % kollektivaSlides.length;
@@ -2818,6 +2868,7 @@ function renderKollektiva(index) {
   kollektivaDescription.textContent = slide.description;
   kollektivaName.textContent = slide.name;
   kollektivaRole.textContent = slide.role;
+  updateTeamBadge();
   [kollektivaDescription, kollektivaName].forEach((element) => {
     element.classList.remove("is-changing");
     void element.offsetWidth;
@@ -2834,6 +2885,8 @@ kollektivaAvatars.forEach((avatar) => {
   avatar.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
       event.preventDefault();
+      teamPhotoStage.classList.add("is-open");
+      teamPhotoLayout.classList.add("is-open");
       const direction = event.key === "ArrowRight" ? 1 : -1;
       const nextIndex = (kollektivaActive + direction + kollektivaSlides.length) % kollektivaSlides.length;
       renderKollektiva(nextIndex);
