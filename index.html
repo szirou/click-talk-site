@@ -8,8 +8,8 @@
       content="A Hangzhou-based international digital marketing and e-commerce company helping brands grow globally through TikTok and social commerce."
     />
     <title>Click Talk — Cross-border TikTok &amp; Social Commerce</title>
-    <link rel="preload" href="./app.js?v=20261109-split-ouni-v25" as="script" fetchpriority="high" />
-    <link rel="stylesheet" href="./styles.css?v=20261109-split-ouni-v25" />
+    <link rel="preload" href="./app.js?v=20261109-hair-compare-v26" as="script" fetchpriority="high" />
+    <link rel="stylesheet" href="./styles.css?v=20261109-hair-compare-v26" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   </head>
   <body>
@@ -662,10 +662,20 @@
               <section class="hair-project-section hair-live-section">
                 <div><p class="service-detail-eyebrow">02 / LIVE OPERATING RHYTHM</p><h3>From selection<br />to confidence.</h3><p class="hair-live-lead">A strong hair livestream gives every product enough time to be seen, explained and compared.</p><p class="hair-live-copy">We connect product order, host expression, close-up demonstration and audience questions into a repeatable operating rhythm.</p></div>
                 <aside class="hair-live-proof"><small data-copy="hairTotalResultTitle">PROJECT GMV RESULT</small><strong>US$100,000+</strong><span data-copy="caseHairGmvLabel">Total monthly GMV · USD</span></aside>
-                <div class="hair-live-evidence" data-copy-aria="hairLiveComparisonLabel" aria-label="Earlier and later livestream dashboard comparison">
-                  <figure><figcaption><span data-copy="hairLiveBefore">EARLIER SESSION</span><strong>US$796</strong><small data-copy="hairLiveBeforeMetric">GMV · USD</small></figcaption><img src="./assets/hair-live-dashboard-796.png" alt="Earlier livestream dashboard showing US$796 GMV" /></figure>
-                  <figure><figcaption><span data-copy="hairLiveAfter">LATER SESSION</span><strong>US$2,998</strong><small data-copy="hairLiveAfterMetric">Attributed GMV · USD</small></figcaption><img src="./assets/hair-live-dashboard-2998.png" alt="Later livestream dashboard showing US$2,998 attributed GMV" /></figure>
-                  <p class="hair-live-comparison-note" data-copy="hairLiveComparisonNote">These are individual livestream dashboard snapshots for comparison. The project’s total monthly GMV is reported above.</p>
+                <div class="hair-live-evidence hair-live-compare" data-hair-compare role="group" data-copy-aria="hairLiveComparisonLabel" aria-label="April and September livestream sales comparison">
+                  <div class="hair-compare-heading">
+                    <div><span data-copy="hairLiveBefore">APRIL</span><strong>US$796</strong><small data-copy="hairLiveBeforeMetric">Single-session GMV · USD</small></div>
+                    <div><span data-copy="hairLiveAfter">SEPTEMBER</span><strong>≈ US$3,000</strong><small data-copy="hairLiveAfterMetric">Consistent sales per livestream · USD</small></div>
+                  </div>
+                  <div class="hair-compare-stage" data-compare-stage style="--compare-position:50%">
+                    <img class="hair-compare-image hair-compare-after" src="./assets/hair-live-dashboard-2998.png" alt="September livestream dashboard showing US$2,998 attributed GMV" draggable="false" width="1917" height="916" />
+                    <div class="hair-compare-before"><img class="hair-compare-image" src="./assets/hair-live-dashboard-796.png" alt="April livestream dashboard showing US$796 GMV" draggable="false" width="1428" height="919" /></div>
+                    <div class="hair-compare-divider" aria-hidden="true"><span>‹<b>›</b></span></div>
+                    <input class="hair-compare-range" data-compare-range type="range" min="0" max="100" value="50" step="1" data-copy-aria="hairLiveSliderLabel" aria-label="Drag left or right to compare April and September sales" aria-describedby="hair-compare-hint" />
+                  </div>
+                  <p class="hair-compare-hint" id="hair-compare-hint" data-copy="hairLiveSliderHint">Drag left or right to compare · Use arrow keys when focused</p>
+                  <p class="hair-live-comparison-note" data-copy="hairLiveComparisonNote">From US$796 in an April livestream to consistent sales of around US$3,000 per livestream by September. The September snapshot shows US$2,998 in attributed GMV. These are session figures, separate from the monthly total above.</p>
+                  <div class="hair-compare-sources"><a href="./assets/hair-live-dashboard-796.png" target="_blank" rel="noopener" data-copy="hairLiveBeforeSource">View April dashboard ↗</a><a href="./assets/hair-live-dashboard-2998.png" target="_blank" rel="noopener" data-copy="hairLiveAfterSource">View September dashboard ↗</a></div>
                 </div>
                 <div class="hair-live-list"><span>PRODUCT ORDER</span><span>HOST EXPLANATION</span><span>CLOSE-UP DEMO</span><span>AUDIENCE QUESTIONS</span></div>
               </section>
@@ -926,9 +936,10 @@
       </div>
     </footer>
 
-    <script src="./app.js?v=20261109-split-ouni-v25"></script>
+    <script src="./app.js?v=20261109-hair-compare-v26"></script>
     <script src="./spotlight-card.js?v=20261109-split-ouni-v25"></script>
     <script src="./infinite-spiral.js?v=20261109-split-ouni-v25"></script>
     <script src="./hero-split-text.js?v=20261109-split-ouni-v25" defer></script>
+    <script src="./hair-compare.js?v=20261109-hair-compare-v26" defer></script>
   </body>
 </html>
