@@ -1479,7 +1479,7 @@ langButtons.forEach((button) => {
 const navigationGroups = [
   {
     key: "services", label: "navApproach", overview: "navBrowseServices", href: "#services",
-    image: "history-2026-office-01.jpg",
+    image: "web/history-2026-office-01.jpg.webp",
     items: [
       ["#operations-detail", "serviceOne"],
       ["#content-detail", "serviceTwo"],
@@ -1489,12 +1489,12 @@ const navigationGroups = [
   },
   {
     key: "projects", label: "navCareers", overview: "navBrowseProjects", href: "#project",
-    image: "hair-project-new-03.jpg",
+    image: "web/hair-project-new-03.jpg.webp",
     items: [
-      ["#project-hair", "caseHairName", "hair-project-new-03.jpg"],
-      ["#project-yoga", "caseYogaName", "yoga-project-05.jpg"],
-      ["#project-jewelry", "caseJewelryName", "jewelry-cover.jpeg"],
-      ["#project-crystal", "caseCrystalName", "crystal-cover.jpeg"],
+      ["#project-hair", "caseHairName", "web/hair-project-new-03.jpg.webp"],
+      ["#project-yoga", "caseYogaName", "web/yoga-project-05.jpg.webp"],
+      ["#project-jewelry", "caseJewelryName", "web/jewelry-cover.jpeg.webp"],
+      ["#project-crystal", "caseCrystalName", "web/crystal-cover.jpeg.webp"],
     ],
   },
 ];
@@ -1860,47 +1860,47 @@ function renderProjectCase(projectId) {
     projectGalleryElement.scrollLeft = 0;
   }
   const galleryImages = [
-    "./assets/show-hairfair-live.png",
-    "./assets/show-live-production.png",
-    "./assets/show-team-meeting.png",
-    "./assets/show-team-meeting.png",
+    "./assets/web/show-hairfair-live.png.webp",
+    "./assets/web/show-live-production.png.webp",
+    "./assets/web/show-team-meeting.png.webp",
+    "./assets/web/show-team-meeting.png.webp",
   ];
   const yogaGalleryImages = [
-    "./assets/yoga-project-01.jpg",
-    "./assets/yoga-project-02.jpg",
-    "./assets/yoga-project-03.jpg",
-    "./assets/yoga-project-04.jpg",
-    "./assets/yoga-project-05.jpg",
+    "./assets/web/yoga-project-01.jpg.webp",
+    "./assets/web/yoga-project-02.jpg.webp",
+    "./assets/web/yoga-project-03.jpg.webp",
+    "./assets/web/yoga-project-04.jpg.webp",
+    "./assets/web/yoga-project-05.jpg.webp",
   ];
   const jewelryGalleryImages = [
-    "./assets/jewelry-project-07.jpeg",
-    "./assets/jewelry-project-08.jpeg",
-    "./assets/jewelry-project-09.jpeg",
-    "./assets/jewelry-project-10.jpeg",
-    "./assets/jewelry-project-05.jpeg",
-    "./assets/jewelry-project-06.jpeg",
+    "./assets/web/jewelry-project-07.jpeg.webp",
+    "./assets/web/jewelry-project-08.jpeg.webp",
+    "./assets/web/jewelry-project-09.jpeg.webp",
+    "./assets/web/jewelry-project-10.jpeg.webp",
+    "./assets/web/jewelry-project-05.jpeg.webp",
+    "./assets/web/jewelry-project-06.jpeg.webp",
   ];
   const crystalGalleryImages = [
-    "./assets/crystal-project-01.jpeg",
-    "./assets/crystal-project-02.jpeg",
-    "./assets/crystal-project-03.jpeg",
-    "./assets/crystal-project-04.jpg",
+    "./assets/web/crystal-project-01.jpeg.webp",
+    "./assets/web/crystal-project-02.jpeg.webp",
+    "./assets/web/crystal-project-03.jpeg.webp",
+    "./assets/web/crystal-project-04.jpg.webp",
   ];
   const hairGalleryImages = [
-    "./assets/hair-project-01.jpeg",
-    "./assets/hair-project-new-01.jpg",
+    "./assets/web/hair-project-01.jpeg.webp",
+    "./assets/web/hair-project-new-01.jpg.webp",
     "./assets/hair-project-new-02.jpg",
-    "./assets/hair-project-new-03.jpg",
-    "./assets/hair-project-04.jpeg",
-    "./assets/hair-project-05.jpg",
-    "./assets/hair-project-07.png",
-    "./assets/hair-project-08.png",
-    "./assets/hair-project-09.png",
-    "./assets/hair-project-10.jpeg",
-    "./assets/hair-project-11.jpeg",
-    "./assets/hair-project-12.jpeg",
-    "./assets/hair-project-13.jpeg",
-    "./assets/hair-live-dashboard-2508.png",
+    "./assets/web/hair-project-new-03.jpg.webp",
+    "./assets/web/hair-project-04.jpeg.webp",
+    "./assets/web/hair-project-05.jpg.webp",
+    "./assets/web/hair-project-07.png.webp",
+    "./assets/web/hair-project-08.png.webp",
+    "./assets/web/hair-project-09.png.webp",
+    "./assets/web/hair-project-10.jpeg.webp",
+    "./assets/web/hair-project-11.jpeg.webp",
+    "./assets/web/hair-project-12.jpeg.webp",
+    "./assets/web/hair-project-13.jpeg.webp",
+    "./assets/web/hair-live-dashboard-2508.png.webp",
   ];
   document.querySelectorAll("[data-project-gallery-image]").forEach((image) => {
     const index = Number(image.dataset.projectGalleryImage);
