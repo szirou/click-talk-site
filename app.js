@@ -2826,7 +2826,7 @@ function loadTeamBadgeScript() {
   if (teamBadgeScript) return teamBadgeScript;
   teamBadgeScript = new Promise((resolve, reject) => {
     const script = document.createElement("script");
-    script.src = "./team-lanyard.js?v=20261109-team-badge-v20";
+    script.src = "./team-lanyard.js?v=20261109-team-portraits-v24";
     script.onload = resolve;
     script.onerror = () => { script.remove(); teamBadgeScript = null; reject(new Error("Lanyard could not load")); };
     document.head.append(script);
@@ -2836,7 +2836,8 @@ function loadTeamBadgeScript() {
 
 function selectedTeamBadgeProfile() {
   const person = (activeLanguage === "zh" ? kollektivaSlidesZh : kollektivaSlides)[kollektivaActive];
-  return { ...person, number: kollektivaActive + 1 };
+  const portraitKey = ({ 6: "ouma", 8: "stancey", 9: "eve", 10: "chris" })[kollektivaActive] || "default";
+  return { ...person, number: kollektivaActive + 1, portraitKey };
 }
 
 async function updateTeamBadge() {
@@ -2845,6 +2846,8 @@ async function updateTeamBadge() {
   kollektivaDetail.querySelector("[data-badge-fallback-name]").textContent = profile.name;
   kollektivaDetail.querySelector("[data-badge-fallback-role]").textContent = profile.role;
   kollektivaDetail.querySelector("[data-badge-fallback-description]").textContent = profile.description;
+  kollektivaDetail.querySelector("[data-badge-fallback-photo]").src = profile.portraitKey === "default"
+    ? "./assets/team-badge-portrait.webp" : `./assets/team-badge-${profile.portraitKey}.webp`;
   teamBadgeContainer.classList.remove("is-flipped");
   teamBadgeFlip.textContent = activeLanguage === "zh" ? "翻转工牌 ↻" : "Flip badge ↻";
   teamBadgeFlip.hidden = false;
