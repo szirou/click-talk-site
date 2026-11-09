@@ -3497,3 +3497,122 @@ if (trainingReel) {
 
   showTrainingStep(0, false);
 }
+
+// A transparent water surface above the page, including open project dialogs.
+// It never captures input, and only animates while ripples are still visible.
+function setupPointerWaterRipples() {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const mouseAvailable = window.matchMedia("(any-hover: hover) and (any-pointer: fine)");
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  if (!context) return;
+  canvas.className = "pointer-water-surface";
+  canvas.setAttribute("aria-hidden", "true");
+  document.body.append(canvas);
+
+  const ripples = [];
+  const lifetime = 1350;
+  const maxRipples = 24;
+  let frame = 0;
+  let width = 0;
+  let height = 0;
+  let pixelRatio = 1;
+  let lastPoint = null;
+  let lastEmission = -Infinity;
+
+  function enabled() {
+    return !reducedMotion.matches && mouseAvailable.matches && !document.hidden;
+  }
+
+  function clear() {
+    window.cancelAnimationFrame(frame);
+    frame = 0;
+    ripples.length = 0;
+    lastPoint = null;
+    lastEmission = -Infinity;
+    context.clearRect(0, 0, width, height);
+  }
+
+  function resize() {
+    clear();
+    width = window.innerWidth;
+    height = window.innerHeight;
+    pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+    canvas.width = Math.round(width * pixelRatio);
+    canvas.height = Math.round(height * pixelRatio);
+    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+  }
+
+  function draw(now) {
+    frame = 0;
+    if (!enabled()) {
+      clear();
+      return;
+    }
+    context.clearRect(0, 0, width, height);
+    for (let index = ripples.length - 1; index >= 0; index -= 1) {
+      const ripple = ripples[index];
+      const age = now - ripple.born;
+      if (age >= lifetime) {
+        ripples.splice(index, 1);
+        continue;
+      }
+      // Three delayed wave fronts give each drop a soft, watery wake.
+      for (let wave = 0; wave < 3; wave += 1) {
+        const progress = (age - wave * 110) / (lifetime - 220);
+        if (progress <= 0 || progress >= 1) continue;
+        const expansion = 1 - Math.pow(1 - progress, 2);
+        const radius = 5 + expansion * (68 + ripple.speed * 16);
+        const opacity = Math.sin(Math.min(progress * 5, 1) * Math.PI / 2)
+          * Math.pow(1 - progress, 2) * (1 - wave * .22);
+        const x = ripple.x + ripple.driftX * expansion * 6;
+        const y = ripple.y + ripple.driftY * expansion * 6;
+
+        context.beginPath();
+        context.ellipse(x, y, radius, radius * .86, -.16, 0, Math.PI * 2);
+        context.strokeStyle = `rgba(47, 142, 186, ${opacity * .28})`;
+        context.lineWidth = 2.6;
+        context.stroke();
+
+        context.beginPath();
+        context.ellipse(x, y - .8, Math.max(1, radius - 1.2), Math.max(1, radius * .86 - 1.2), -.16, 0, Math.PI * 2);
+        context.strokeStyle = `rgba(225, 248, 255, ${opacity * .58})`;
+        context.lineWidth = .85;
+        context.stroke();
+      }
+    }
+    if (ripples.length) frame = window.requestAnimationFrame(draw);
+  }
+
+  function move(event) {
+    if (event.pointerType !== "mouse" || !enabled()) return;
+    const now = performance.now();
+    const point = { x: event.clientX, y: event.clientY };
+    const dx = lastPoint ? point.x - lastPoint.x : 0;
+    const dy = lastPoint ? point.y - lastPoint.y : 0;
+    const distance = Math.hypot(dx, dy);
+    if (lastPoint && (now - lastEmission < 55 || distance < 12)) return;
+    ripples.push({
+      ...point,
+      born: now,
+      speed: Math.min(distance / 70, 1),
+      driftX: distance ? dx / distance : 0,
+      driftY: distance ? dy / distance : 0,
+    });
+    if (ripples.length > maxRipples) ripples.shift();
+    lastPoint = point;
+    lastEmission = now;
+    if (!frame) frame = window.requestAnimationFrame(draw);
+  }
+
+  resize();
+  document.addEventListener("pointermove", move, { passive: true });
+  document.documentElement.addEventListener("pointerleave", () => { lastPoint = null; }, { passive: true });
+  window.addEventListener("resize", resize, { passive: true });
+  window.addEventListener("blur", clear);
+  document.addEventListener("visibilitychange", clear);
+  reducedMotion.addEventListener("change", clear);
+  mouseAvailable.addEventListener("change", clear);
+}
+
+setupPointerWaterRipples();

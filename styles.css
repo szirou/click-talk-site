@@ -11030,6 +11030,21 @@ html[lang="zh-CN"] .project-crystal-detail .crystal-closing-section h3 { white-s
   #services :is(#operations-detail, #content-detail, #creator-detail, #training-detail) .line-sidebar > .service-line-item > :is(span:first-child, strong) { transform: none; }
 }
 
+/* Decorative mouse ripples never block links, text selection or scrolling. */
+.pointer-water-surface {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+@media (prefers-reduced-motion: reduce), (any-hover: none) {
+  .pointer-water-surface { display: none; }
+}
+
 /* All four project cases share this dialog. Keep its close control anchored
    to the viewport, outside the scrolling content and clear of phone notches. */
 #main #project-detail > .project-detail-panel > button.service-detail-close {
