@@ -2826,7 +2826,7 @@ function loadTeamBadgeScript() {
   if (teamBadgeScript) return teamBadgeScript;
   teamBadgeScript = new Promise((resolve, reject) => {
     const script = document.createElement("script");
-    script.src = "./team-lanyard.js?v=20261109-team-portraits-v24";
+    script.src = "./team-lanyard.js?v=20261109-split-ouni-v25";
     script.onload = resolve;
     script.onerror = () => { script.remove(); teamBadgeScript = null; reject(new Error("Lanyard could not load")); };
     document.head.append(script);
@@ -2836,7 +2836,7 @@ function loadTeamBadgeScript() {
 
 function selectedTeamBadgeProfile() {
   const person = (activeLanguage === "zh" ? kollektivaSlidesZh : kollektivaSlides)[kollektivaActive];
-  const portraitKey = ({ 6: "ouma", 8: "stancey", 9: "eve", 10: "chris" })[kollektivaActive] || "default";
+  const portraitKey = ({ 6: "ouma", 8: "stancey", 9: "eve", 10: "chris", 11: "ouni" })[kollektivaActive] || "default";
   return { ...person, number: kollektivaActive + 1, portraitKey };
 }
 

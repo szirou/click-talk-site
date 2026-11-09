@@ -10159,6 +10159,9 @@ main#main > .services#services {
 
 .hero--centered .hero-copy { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 .hero--centered h1 { margin: 0; }
+/* SplitText only animates the cover wordmark; layout and brand colors stay put. */
+.hero--centered #hero-title[data-hero-split-text] { pointer-events: auto; overflow: visible; }
+.hero--centered #hero-title .split-word { white-space: nowrap; }
 .hero--centered .eyebrow { position: absolute; bottom: 100%; margin-bottom: 32px; }
 .hero--centered .hero-intro-row { position: absolute; top: calc(100% + 150px); }
 .hero--centered .hero-statement {
