@@ -2743,9 +2743,9 @@ document.addEventListener("keydown", (event) => {
 const kollektivaDetail = document.querySelector("#team");
 const kollektivaSlides = [
   {
-    name: "Chris",
-    role: "Founder & CEO",
-    description: "Chris leads Click Talk and sets the direction for a team built around sharp operations, strong talent and global growth.",
+    name: "Prince",
+    role: "Click Talk Team",
+    description: "Prince is part of the Click Talk team.",
   },
   {
     name: "Wael",
@@ -2753,9 +2753,9 @@ const kollektivaSlides = [
     description: "Wael is part of Click Talk’s livestream operations team.",
   },
   {
-    name: "Ouma",
-    role: "Livestream Host",
-    description: "Ouma brings an open, confident energy to the live room and turns every product moment into a reason to stay and talk.",
+    name: "Team member 03",
+    role: "Click Talk Team",
+    description: "A member of the Click Talk team.",
   },
   {
     name: "Candy",
@@ -2763,9 +2763,9 @@ const kollektivaSlides = [
     description: "Candy makes live commerce feel personal, expressive and easy to follow, helping audiences move naturally from interest to action.",
   },
   {
-    name: "Lisa",
+    name: "Deely",
     role: "Livestream Host",
-    description: "Lisa pairs a warm on-camera presence with a clear product story, creating live moments that feel useful, memorable and real.",
+    description: "Deely pairs a warm on-camera presence with a clear product story, creating live moments that feel useful, memorable and real.",
   },
   {
     name: "Asia",
@@ -2773,28 +2773,28 @@ const kollektivaSlides = [
     description: "Asia brings pace and personality to every broadcast, keeping the room engaged while the offer stays clear and compelling.",
   },
   {
-    name: "Mels",
+    name: "Ouma",
     role: "Livestream Host",
-    description: "Mels brings a distinct point of view to the live room, building trust through an easy rhythm, thoughtful details and genuine connection.",
+    description: "Ouma brings an open, confident energy to the live room and turns every product moment into a reason to stay and talk.",
   },
   { name: "Team member 08", role: "Click Talk Team", description: "A member of the wider Click Talk team, helping turn shared ideas into clear, practical work across markets." },
   { name: "Stancey", role: "Click Talk Team", description: "Part of the team behind the scenes, bringing care, energy and a collaborative point of view to each project." },
-  { name: "EVE", role: "Operating Partner · Operations Manager", description: "EVE keeps the day-to-day operation moving, connecting people, priorities and live commerce details with calm precision." },
-  { name: "Team member 11", role: "Click Talk Team", description: "A teammate contributing to the everyday coordination, care and momentum behind each project." },
+  { name: "Eve", role: "Operating Partner · Operations Manager", description: "Eve keeps the day-to-day operation moving, connecting people, priorities and live commerce details with calm precision." },
+  { name: "Chris", role: "Founder & CEO", description: "Chris leads Click Talk and sets the direction for a team built around sharp operations, strong talent and global growth." },
   { name: "OUNI", role: "Click Talk Team Dog", description: "The team’s four-legged companion, bringing calm, warmth and a little extra joy to the office." },
 ];
 const kollektivaSlidesZh = [
-  { name: "Chris", role: "创始人兼 CEO", description: "Chris 负责 Click Talk 的整体方向，带领团队以扎实运营、优秀人才与全球增长为核心持续前进。" },
+  { name: "Prince", role: "Click Talk 团队", description: "Prince 是 Click Talk 团队的一员。" },
   { name: "Wael", role: "直播运营", description: "Wael 是 Click Talk 直播运营团队的一员。" },
-  { name: "Ouma", role: "直播主播", description: "Ouma 为直播间带来开放、自信的能量，把每一个产品瞬间变成值得停留和交流的理由。" },
+  { name: "团队成员 03", role: "Click Talk 团队", description: "Click Talk 团队的一员。" },
   { name: "Candy", role: "直播主播", description: "Candy 让直播电商更有温度、更有表达，也让观众自然地从兴趣走向行动。" },
-  { name: "Lisa", role: "直播主播", description: "Lisa 用亲切的镜头表现和清晰的产品表达，创造有用、难忘又真实的直播时刻。" },
+  { name: "Deely", role: "直播主播", description: "Deely 用亲切的镜头表现和清晰的产品表达，创造有用、难忘又真实的直播时刻。" },
   { name: "Asia", role: "直播主播", description: "Asia 为每场直播带来节奏与个性，在保持现场热度的同时，让产品价值清晰可见。" },
-  { name: "Mels", role: "直播主播", description: "Mels 用独特的视角与自然的节奏建立信任，让直播间产生真实连接。" },
+  { name: "Ouma", role: "直播主播", description: "Ouma 为直播间带来开放、自信的能量，把每一个产品瞬间变成值得停留和交流的理由。" },
   { name: "团队成员 08", role: "Click Talk 团队", description: "Click Talk 团队的一员，把共同想法转化为清晰、可执行并能连接不同市场的工作。" },
   { name: "Stancey", role: "Click Talk 团队", description: "负责项目背后的协作与推进，用细致、能量和独特视角支持每一次工作。" },
-  { name: "EVE", role: "公司合伙人 · 运营经理", description: "EVE 负责推动日常运营，把人员、重点与直播电商细节连接成稳定而清晰的节奏。" },
-  { name: "团队成员 11", role: "Click Talk 团队", description: "参与日常协作、推进与支持项目的一员，让每一次工作都更有节奏。" },
+  { name: "Eve", role: "公司合伙人 · 运营经理", description: "Eve 负责推动日常运营，把人员、重点与直播电商细节连接成稳定而清晰的节奏。" },
+  { name: "Chris", role: "创始人兼 CEO", description: "Chris 负责 Click Talk 的整体方向，带领团队以扎实运营、优秀人才与全球增长为核心持续前进。" },
   { name: "OUNI", role: "Click Talk 团队狗狗", description: "团队的四脚伙伴，为办公室带来安静、温暖和更多快乐。" },
 ];
 const kollektivaAvatars = Array.from(kollektivaDetail.querySelectorAll("[data-kollektiva-avatar]"));
