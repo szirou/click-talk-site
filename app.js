@@ -3086,6 +3086,54 @@ if (operationsReel) {
   });
 
   showOperationsStep(0, false);
+
+  // Static-site adaptation of React Bits LineSidebar. Pointer proximity drives
+  // one shared effect value per item while the existing scroll spy owns the
+  // active section state.
+  const lineSidebar = operationsReel.querySelector(".operations-reel-steps");
+  if (lineSidebar) {
+    lineSidebar.classList.add("line-sidebar");
+    lineSidebar.setAttribute("aria-label", "Operations strategy sections");
+    const readingBody = document.createElement("div");
+    readingBody.className = "operations-reading-body";
+    [...operationsReel.children].filter((child) => child.classList.contains("service-reading-section")).forEach((row) => readingBody.append(row));
+    operationsReel.append(readingBody);
+    const reduceSidebarMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const targets = stepButtons.map(() => 0);
+    const current = stepButtons.map(() => 0);
+    let raf = 0;
+    let last = 0;
+    const renderLineSidebar = (now) => {
+      const dt = last ? Math.min((now - last) / 1000, .05) : 1 / 60;
+      last = now;
+      const blend = 1 - Math.exp(-dt / .1);
+      let moving = false;
+      stepButtons.forEach((button, index) => {
+        const next = reduceSidebarMotion.matches ? targets[index] : current[index] + (targets[index] - current[index]) * blend;
+        current[index] = Math.abs(targets[index] - next) < .002 ? targets[index] : next;
+        button.style.setProperty("--line-effect", current[index].toFixed(4));
+        if (Math.abs(targets[index] - current[index]) >= .002) moving = true;
+      });
+      raf = moving ? requestAnimationFrame(renderLineSidebar) : 0;
+      if (!moving) last = 0;
+    };
+    const wake = () => {
+      if (!raf) raf = requestAnimationFrame(renderLineSidebar);
+    };
+    lineSidebar.addEventListener("pointermove", (event) => {
+      stepButtons.forEach((button, index) => {
+        const rect = button.getBoundingClientRect();
+        const distance = Math.abs(event.clientY - (rect.top + rect.height / 2));
+        const proximity = Math.max(0, 1 - distance / 105);
+        targets[index] = proximity * proximity * (3 - 2 * proximity);
+      });
+      wake();
+    });
+    lineSidebar.addEventListener("pointerleave", () => {
+      targets.fill(0);
+      wake();
+    });
+  }
 }
 
 const contentReel = document.querySelector("[data-content-reel]");
