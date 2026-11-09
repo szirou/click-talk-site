@@ -11030,6 +11030,20 @@ html[lang="zh-CN"] .project-crystal-detail .crystal-closing-section h3 { white-s
   #services :is(#operations-detail, #content-detail, #creator-detail, #training-detail) .line-sidebar > .service-line-item > :is(span:first-child, strong) { transform: none; }
 }
 
+/* All four project cases share this dialog. Keep its close control anchored
+   to the viewport, outside the scrolling content and clear of phone notches. */
+#main #project-detail > .project-detail-panel > button.service-detail-close {
+  position: fixed;
+  top: max(24px, env(safe-area-inset-top, 0px));
+  right: max(24px, 5vw, env(safe-area-inset-right, 0px));
+}
+@media (max-width: 640px) {
+  #main #project-detail > .project-detail-panel > button.service-detail-close {
+    top: max(18px, env(safe-area-inset-top, 0px));
+    right: max(18px, env(safe-area-inset-right, 0px));
+  }
+}
+
 /* One high-contrast close control for project and service detail screens.
    Draw the cross consistently instead of relying on a thin font glyph. */
 #main :is(.service-detail, .inquiry-modal) button:is(.service-detail-close, .inquiry-close) {
