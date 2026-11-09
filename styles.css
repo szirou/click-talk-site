@@ -11030,3 +11030,50 @@ html[lang="zh-CN"] .project-crystal-detail .crystal-closing-section h3 { white-s
   #services :is(#operations-detail, #content-detail, #creator-detail, #training-detail) .line-sidebar > .service-line-item > :is(span:first-child, strong) { transform: none; }
 }
 
+/* One high-contrast close control for project and service detail screens.
+   Draw the cross consistently instead of relying on a thin font glyph. */
+#main :is(.service-detail, .inquiry-modal) button:is(.service-detail-close, .inquiry-close) {
+  z-index: 30;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  padding: 0;
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--white);
+  box-shadow: 0 0 0 1px rgba(18, 58, 99, .32), 0 4px 14px rgba(18, 58, 99, .23);
+  opacity: 1;
+  font-size: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+#main :is(.service-detail, .inquiry-modal) button:is(.service-detail-close, .inquiry-close)::before,
+#main :is(.service-detail, .inquiry-modal) button:is(.service-detail-close, .inquiry-close)::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 2.5px;
+  border-radius: 2px;
+  background: currentColor;
+  content: "";
+  pointer-events: none;
+}
+#main :is(.service-detail, .inquiry-modal) button:is(.service-detail-close, .inquiry-close)::before { transform: translate(-50%, -50%) rotate(45deg); }
+#main :is(.service-detail, .inquiry-modal) button:is(.service-detail-close, .inquiry-close)::after { transform: translate(-50%, -50%) rotate(-45deg); }
+#main :is(.service-detail, .inquiry-modal) button:is(.service-detail-close, .inquiry-close):hover {
+  background: var(--coral);
+  color: var(--ink);
+  box-shadow: 0 0 0 1px rgba(18, 58, 99, .42), 0 6px 18px rgba(18, 58, 99, .26);
+}
+#main :is(.service-detail, .inquiry-modal) button:is(.service-detail-close, .inquiry-close):focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  #main :is(.service-detail, .inquiry-modal) button:is(.service-detail-close, .inquiry-close) { transition: none; }
+}
+
