@@ -1468,7 +1468,7 @@ function setLanguage(language) {
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
   });
-
+  window.dispatchEvent(new Event('clicktalk:languagechange'));
 }
 
 langButtons.forEach((button) => {

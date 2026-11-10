@@ -10180,9 +10180,12 @@ main#main > .services#services {
 
 .hero--centered .hero-copy { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 .hero--centered h1 { margin: 0; }
-/* SplitText only animates the cover wordmark; layout and brand colors stay put. */
-.hero--centered #hero-title[data-hero-split-text] { pointer-events: auto; overflow: visible; }
-.hero--centered #hero-title .split-word { white-space: nowrap; }
+/* The static heading reserves the same space while SVG draws and fills it. */
+.hero--centered #hero-title[data-hero-glitch-text] { position: relative; pointer-events: auto; overflow: visible; }
+.hero-stroke-line { position: relative; display: inline-block; white-space: nowrap; }
+.hero-stroke-svg { position: absolute; top: -.12em; left: 0; display: block; width: 100%; height: calc(100% + .24em); overflow: visible; visibility: hidden; user-select: none; }
+.is-stroke-ready .hero-stroke-svg { visibility: visible; }
+.is-stroke-ready .hero-stroke-fallback { opacity: 0; }
 .hero--centered .eyebrow { position: absolute; bottom: 100%; margin-bottom: 32px; }
 .hero--centered .hero-intro-row { position: absolute; top: calc(100% + 150px); }
 .hero--centered .hero-statement {
