@@ -6802,7 +6802,7 @@ html[lang="zh-CN"] .packages-page-head h2 {
   justify-content: center;
   text-align: center;
   pointer-events: none;
-  text-shadow: 0 3px 24px rgba(0,0,0,.8);
+  text-shadow: none;
 }
 .hero--centered .eyebrow { margin: 0 0 28px; }
 .hero--centered h1 {
