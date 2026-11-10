@@ -10180,21 +10180,20 @@ main#main > .services#services {
 
 .hero--centered .hero-copy { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 .hero--centered h1 { margin: 0; }
-/* The static heading reserves the same space while SVG draws and fills it. */
+/* Keep the title's brief glitch intro; the quieter slogan is plain text. */
 .hero--centered #hero-title[data-hero-glitch-text] { position: relative; pointer-events: auto; overflow: visible; }
-.hero-stroke-line { position: relative; display: inline-block; white-space: nowrap; }
-.hero-stroke-svg { position: absolute; top: -.12em; left: 0; display: block; width: 100%; height: calc(100% + .24em); overflow: visible; visibility: hidden; user-select: none; }
-.is-stroke-ready .hero-stroke-svg { visibility: visible; }
-.is-stroke-ready .hero-stroke-fallback { opacity: 0; }
 .hero--centered .eyebrow { position: absolute; bottom: 100%; margin-bottom: 32px; }
-.hero--centered .hero-intro-row { position: absolute; top: calc(100% + 150px); }
+.hero--centered .hero-intro-row { position: absolute; top: calc(100% + 92px); }
 .hero--centered .hero-statement {
   position: absolute;
   top: calc(100% + 28px);
-  max-width: 720px;
-  margin-bottom: 30px;
-  font-size: clamp(24px, 2.6vw, 38px);
-  line-height: 1.08;
+  width: max-content;
+  max-width: calc(100vw - 36px);
+  margin: 0;
+  font-size: clamp(10px, 2.6vw, 22px);
+  line-height: 1.4;
+  white-space: nowrap;
+  color: rgba(255,255,255,.82);
 }
 
 @media (max-width: 880px) {
