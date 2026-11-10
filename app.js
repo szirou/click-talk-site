@@ -1479,7 +1479,7 @@ langButtons.forEach((button) => {
 const navigationGroups = [
   {
     key: "services", label: "navApproach", overview: "navBrowseServices", href: "#services",
-    image: "web/history-2026-office-01.jpg.webp",
+    image: "web-lite/history-2026-office-01.jpg.webp",
     items: [
       ["#operations-detail", "serviceOne"],
       ["#content-detail", "serviceTwo"],
@@ -1489,12 +1489,12 @@ const navigationGroups = [
   },
   {
     key: "projects", label: "navCareers", overview: "navBrowseProjects", href: "#project",
-    image: "web/hair-project-new-03.jpg.webp",
+    image: "web-lite/hair-project-new-03.jpg.webp",
     items: [
-      ["#project-hair", "caseHairName", "web/hair-project-new-03.jpg.webp"],
-      ["#project-yoga", "caseYogaName", "web/yoga-project-05.jpg.webp"],
-      ["#project-jewelry", "caseJewelryName", "web/jewelry-cover.jpeg.webp"],
-      ["#project-crystal", "caseCrystalName", "web/crystal-cover.jpeg.webp"],
+      ["#project-hair", "caseHairName", "web-lite/hair-project-new-03.jpg.webp"],
+      ["#project-yoga", "caseYogaName", "web-lite/yoga-project-05.jpg.webp"],
+      ["#project-jewelry", "caseJewelryName", "web-lite/jewelry-cover.jpeg.webp"],
+      ["#project-crystal", "caseCrystalName", "web-lite/crystal-cover.jpeg.webp"],
     ],
   },
 ];
@@ -1860,47 +1860,47 @@ function renderProjectCase(projectId) {
     projectGalleryElement.scrollLeft = 0;
   }
   const galleryImages = [
-    "./assets/web/show-hairfair-live.png.webp",
-    "./assets/web/show-live-production.png.webp",
-    "./assets/web/show-team-meeting.png.webp",
-    "./assets/web/show-team-meeting.png.webp",
+    "./assets/web-lite/show-hairfair-live.png.webp",
+    "./assets/web-lite/show-live-production.png.webp",
+    "./assets/web-lite/show-team-meeting.png.webp",
+    "./assets/web-lite/show-team-meeting.png.webp",
   ];
   const yogaGalleryImages = [
-    "./assets/web/yoga-project-01.jpg.webp",
-    "./assets/web/yoga-project-02.jpg.webp",
-    "./assets/web/yoga-project-03.jpg.webp",
-    "./assets/web/yoga-project-04.jpg.webp",
-    "./assets/web/yoga-project-05.jpg.webp",
+    "./assets/web-lite/yoga-project-01.jpg.webp",
+    "./assets/web-lite/yoga-project-02.jpg.webp",
+    "./assets/web-lite/yoga-project-03.jpg.webp",
+    "./assets/web-lite/yoga-project-04.jpg.webp",
+    "./assets/web-lite/yoga-project-05.jpg.webp",
   ];
   const jewelryGalleryImages = [
-    "./assets/web/jewelry-project-07.jpeg.webp",
-    "./assets/web/jewelry-project-08.jpeg.webp",
-    "./assets/web/jewelry-project-09.jpeg.webp",
-    "./assets/web/jewelry-project-10.jpeg.webp",
-    "./assets/web/jewelry-project-05.jpeg.webp",
-    "./assets/web/jewelry-project-06.jpeg.webp",
+    "./assets/web-lite/jewelry-project-07.jpeg.webp",
+    "./assets/web-lite/jewelry-project-08.jpeg.webp",
+    "./assets/web-lite/jewelry-project-09.jpeg.webp",
+    "./assets/web-lite/jewelry-project-10.jpeg.webp",
+    "./assets/web-lite/jewelry-project-05.jpeg.webp",
+    "./assets/web-lite/jewelry-project-06.jpeg.webp",
   ];
   const crystalGalleryImages = [
-    "./assets/web/crystal-project-01.jpeg.webp",
-    "./assets/web/crystal-project-02.jpeg.webp",
-    "./assets/web/crystal-project-03.jpeg.webp",
-    "./assets/web/crystal-project-04.jpg.webp",
+    "./assets/web-lite/crystal-project-01.jpeg.webp",
+    "./assets/web-lite/crystal-project-02.jpeg.webp",
+    "./assets/web-lite/crystal-project-03.jpeg.webp",
+    "./assets/web-lite/crystal-project-04.jpg.webp",
   ];
   const hairGalleryImages = [
-    "./assets/web/hair-project-01.jpeg.webp",
-    "./assets/web/hair-project-new-01.jpg.webp",
+    "./assets/web-lite/hair-project-01.jpeg.webp",
+    "./assets/web-lite/hair-project-new-01.jpg.webp",
     "./assets/hair-project-new-02.jpg",
-    "./assets/web/hair-project-new-03.jpg.webp",
-    "./assets/web/hair-project-04.jpeg.webp",
-    "./assets/web/hair-project-05.jpg.webp",
-    "./assets/web/hair-project-07.png.webp",
-    "./assets/web/hair-project-08.png.webp",
-    "./assets/web/hair-project-09.png.webp",
-    "./assets/web/hair-project-10.jpeg.webp",
-    "./assets/web/hair-project-11.jpeg.webp",
-    "./assets/web/hair-project-12.jpeg.webp",
-    "./assets/web/hair-project-13.jpeg.webp",
-    "./assets/web/hair-live-dashboard-2508.png.webp",
+    "./assets/web-lite/hair-project-new-03.jpg.webp",
+    "./assets/web-lite/hair-project-04.jpeg.webp",
+    "./assets/web-lite/hair-project-05.jpg.webp",
+    "./assets/web-lite/hair-project-07.png.webp",
+    "./assets/web-lite/hair-project-08.png.webp",
+    "./assets/web-lite/hair-project-09.png.webp",
+    "./assets/web-lite/hair-project-10.jpeg.webp",
+    "./assets/web-lite/hair-project-11.jpeg.webp",
+    "./assets/web-lite/hair-project-12.jpeg.webp",
+    "./assets/web-lite/hair-project-13.jpeg.webp",
+    "./assets/web-lite/hair-live-dashboard-2508.png.webp",
   ];
   document.querySelectorAll("[data-project-gallery-image]").forEach((image) => {
     const index = Number(image.dataset.projectGalleryImage);
